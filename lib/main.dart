@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'question_bank.dart';
+import 'statsPage.dart';
 import 'answer.dart';
+
 
 
 void main() => runApp(Quizzler());
@@ -8,10 +10,15 @@ void main() => runApp(Quizzler());
 class Quizzler extends StatelessWidget {
   const Quizzler({Key? key}) : super(key: key);
 
+
+
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
+      routes: {
+        StatsPage.routeName: (context) => StatsPage(),
+      },
       home: Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(
@@ -65,25 +72,6 @@ class _QuizPageState extends State<QuizPage> {
 
   List<Answer> userAnswers = [];
 
-  var finishButton = Card(
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(15.0),
-    ),
-    color: Colors.green,
-    child: TextButton(
-      onPressed: () {},
-      child: Padding(
-        padding: EdgeInsets.all(10.0),
-        child: Text(
-          'Finish Quizz',
-          style: TextStyle(
-            fontSize: 15.0,
-            color: Colors.white,
-          ),
-        ),
-      ),
-    ),
-  );
 
   var checkAnswersButton = Card(
     shape: RoundedRectangleBorder(
@@ -105,18 +93,58 @@ class _QuizPageState extends State<QuizPage> {
     ),
   );
 
+  var finishButton;
+
+  static const routeName = '/userAnswers';
 
 
   @override
   Widget build(BuildContext context) {
 
 
+    finishButton = Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+      ),
+      color: Colors.green,
+      child: TextButton(
+        onPressed: () {
+
+
+          userAnswers[questionIndex].option1 = option1;
+          userAnswers[questionIndex].option2 = option2;
+          userAnswers[questionIndex].option3 = option3;
+          userAnswers[questionIndex].option4 = option4;
+
+
+          Navigator.pushNamed(
+            context,
+            StatsPage.routeName,
+            arguments: ScreenArguments(
+                userAnswers
+            ),
+          );
+
+        },
+        child: Padding(
+          padding: EdgeInsets.all(10.0),
+          child: Text(
+            'Finish Quizz',
+            style: TextStyle(
+              fontSize: 15.0,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+    );
+
     return Column(
       children: [
 
         LayoutBuilder(builder: (_, constraints) => Container(
           color: Colors.white,
-          height: 120.0,
+          height: 110.0,
           width: double.infinity,
           padding: EdgeInsets.zero,
           child: CustomPaint(
@@ -126,225 +154,228 @@ class _QuizPageState extends State<QuizPage> {
 
 
         Container(
-          child: Column(
-            children: [
+          height: 622.0,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
 
 
-              Container(
-                width: double.infinity,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  color: Colors.blue,
-                  margin: EdgeInsets.only(left: 15.0, right: 15.0),
-                  child: Padding(
-                    padding: EdgeInsets.all(20.0),
-                    child: Text(
-                      questionBank.questionBank[questionIndex].text.toString(),
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.white,
+                Container(
+                  width: double.infinity,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    color: Colors.blue,
+                    margin: EdgeInsets.only(left: 15.0, right: 15.0),
+                    child: Padding(
+                      padding: EdgeInsets.all(20.0),
+                      child: Text(
+                        questionBank.questionBank[questionIndex].text.toString(),
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
 
-              SizedBox(
-                height: 20.0,
-              ),
+                SizedBox(
+                  height: 20.0,
+                ),
 
-              Container(
-                width: double.infinity,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                   color: option1 ? optionCheckedColor : optionUncheckedColor,
-                  margin: EdgeInsets.only(left: 15.0, right: 15.0),
-                  child: TextButton(
-                    onPressed: () {
-
-
-                      setState(() {
-                        option1 = !option1;
-                      });
+                Container(
+                  width: double.infinity,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                     color: option1 ? optionCheckedColor : optionUncheckedColor,
+                    margin: EdgeInsets.only(left: 15.0, right: 15.0),
+                    child: TextButton(
+                      onPressed: () {
 
 
-                    },
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 10.0, vertical: 18.0),
-                      child: Row(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(right: 10.0),
-                            child: option1 ? checkedButtonAnswer : uncheckedButtonAnswer,
-                          ),
-                          Container(
-                            width: 302.0,
-                            child: Text(
-                              questionBank.questionBank[questionIndex].options[0].option,
-                              style: TextStyle(
-                                fontSize: 15.0,
-                                color: option1 ? optionCheckedFontColor : optionUncheckedFontColor,
+                        setState(() {
+                          option1 = !option1;
+                        });
+
+
+                      },
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10.0, vertical: 18.0),
+                        child: Row(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(right: 10.0),
+                              child: option1 ? checkedButtonAnswer : uncheckedButtonAnswer,
+                            ),
+                            Container(
+                              width: 302.0,
+                              child: Text(
+                                questionBank.questionBank[questionIndex].options[0].option,
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  color: option1 ? optionCheckedFontColor : optionUncheckedFontColor,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
 
-              SizedBox(
-                height: 10.0,
-              ),
+                SizedBox(
+                  height: 10.0,
+                ),
 
-              Container(
-                width: double.infinity,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  color: option2 ? optionCheckedColor : optionUncheckedColor,
-                  margin: EdgeInsets.only(left: 15.0, right: 15.0),
-                  child: TextButton(
-                    onPressed: () {
+                Container(
+                  width: double.infinity,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    color: option2 ? optionCheckedColor : optionUncheckedColor,
+                    margin: EdgeInsets.only(left: 15.0, right: 15.0),
+                    child: TextButton(
+                      onPressed: () {
 
-                      setState(() {
-                        option2 = !option2;
-                      });
+                        setState(() {
+                          option2 = !option2;
+                        });
 
-                    },
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 10.0, vertical: 18.0),
-                      child: Row(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(right: 10.0),
-                            child: option2 ? checkedButtonAnswer : uncheckedButtonAnswer,
-                          ),
-                          Container(
-                            width: 302.0,
-                            child: Text(
-                              questionBank.questionBank[questionIndex].options[1].option,
-                              style: TextStyle(
-                                fontSize: 15.0,
-                                color: option2 ? optionCheckedFontColor : optionUncheckedFontColor,
+                      },
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10.0, vertical: 18.0),
+                        child: Row(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(right: 10.0),
+                              child: option2 ? checkedButtonAnswer : uncheckedButtonAnswer,
+                            ),
+                            Container(
+                              width: 302.0,
+                              child: Text(
+                                questionBank.questionBank[questionIndex].options[1].option,
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  color: option2 ? optionCheckedFontColor : optionUncheckedFontColor,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
 
-              SizedBox(
-                height: 10.0,
-              ),
+                SizedBox(
+                  height: 10.0,
+                ),
 
-              Container(
-                width: double.infinity,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  color: option3 ? optionCheckedColor : optionUncheckedColor,
-                  margin: EdgeInsets.only(left: 15.0, right: 15.0),
-                  child: TextButton(
-                    onPressed: () {
+                Container(
+                  width: double.infinity,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    color: option3 ? optionCheckedColor : optionUncheckedColor,
+                    margin: EdgeInsets.only(left: 15.0, right: 15.0),
+                    child: TextButton(
+                      onPressed: () {
 
-                      setState(() {
-                        option3 = !option3;
-                      });
+                        setState(() {
+                          option3 = !option3;
+                        });
 
 
-                    },
-                    child: Padding(
-                      padding:
-                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 18.0),
-                      child: Row(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(right: 10.0),
-                            child: option3 ? checkedButtonAnswer : uncheckedButtonAnswer,
-                          ),
-                          Container(
-                            width: 302.0,
-                            child: Text(
-                              questionBank.questionBank[questionIndex].options[2].option,
-                              style: TextStyle(
-                                fontSize: 15.0,
-                                color: option3 ? optionCheckedFontColor : optionUncheckedFontColor,
+                      },
+                      child: Padding(
+                        padding:
+                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 18.0),
+                        child: Row(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(right: 10.0),
+                              child: option3 ? checkedButtonAnswer : uncheckedButtonAnswer,
+                            ),
+                            Container(
+                              width: 302.0,
+                              child: Text(
+                                questionBank.questionBank[questionIndex].options[2].option,
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  color: option3 ? optionCheckedFontColor : optionUncheckedFontColor,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
 
-              SizedBox(
-                height: 10.0,
-              ),
+                SizedBox(
+                  height: 10.0,
+                ),
 
-              Container(
-                width: double.infinity,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  color: option4 ? optionCheckedColor : optionUncheckedColor,
-                  margin: EdgeInsets.only(left: 15.0, right: 15.0),
-                  child: TextButton(
-                    onPressed: () {
-
-
-                      setState(() {
-                        option4 = !option4;
-                      });
+                Container(
+                  width: double.infinity,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    color: option4 ? optionCheckedColor : optionUncheckedColor,
+                    margin: EdgeInsets.only(left: 15.0, right: 15.0),
+                    child: TextButton(
+                      onPressed: () {
 
 
-                    },
-                    child: Padding(
-                      padding:
-                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 18.0),
-                      child: Row(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(right: 10.0),
-                            child: option4 ? checkedButtonAnswer : uncheckedButtonAnswer,
-                          ),
-                          Container(
-                            width: 302.0,
-                            child: Text(
-                              questionBank.questionBank[questionIndex].options[3].option,
-                              style: TextStyle(
-                                fontSize: 15.0,
-                                color: option4 ? optionCheckedFontColor : optionUncheckedFontColor,
+                        setState(() {
+                          option4 = !option4;
+                        });
+
+
+                      },
+                      child: Padding(
+                        padding:
+                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 18.0),
+                        child: Row(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(right: 10.0),
+                              child: option4 ? checkedButtonAnswer : uncheckedButtonAnswer,
+                            ),
+                            Container(
+                              width: 302.0,
+                              child: Text(
+                                questionBank.questionBank[questionIndex].options[3].option,
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  color: option4 ? optionCheckedFontColor : optionUncheckedFontColor,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
 
-            ],
+              ],
+            ),
           ),
         ),
 
-        Expanded(child:Container()),
+        // Expanded(child:Container()),
 
 
         Container(
@@ -445,7 +476,8 @@ class _QuizPageState extends State<QuizPage> {
                                   option1: option1,
                                   option2: option2,
                                   option3: option3,
-                                  option4: option4
+                                  option4: option4,
+                                correctUncorrectOptions: questionBank.questionBank[questionIndex].options
                               ));
 
                               questionNumberChecker = questionNumberChecker + 1;
@@ -499,7 +531,8 @@ class _QuizPageState extends State<QuizPage> {
                                   option1: option1,
                                   option2: option2,
                                   option3: option3,
-                                  option4: option4
+                                  option4: option4,
+                                correctUncorrectOptions: questionBank.questionBank[questionIndex].options
                               ));
 
 
@@ -592,3 +625,23 @@ class Painter extends CustomPainter {
   }
 
 }
+
+
+class ScreenArguments {
+  final List<Answer> userAnswers;
+
+  int length = 0;
+  int correct = 0;
+  int wrong = 0;
+
+  ScreenArguments(this.userAnswers);
+
+
+}
+
+
+
+
+
+
+
