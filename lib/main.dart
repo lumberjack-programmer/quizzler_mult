@@ -140,11 +140,12 @@ class _QuizPageState extends State<QuizPage> {
     );
 
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
 
         LayoutBuilder(builder: (_, constraints) => Container(
           color: Colors.white,
-          height: 110.0,
+          height: 40.0,
           width: double.infinity,
           padding: EdgeInsets.zero,
           child: CustomPaint(
@@ -154,7 +155,7 @@ class _QuizPageState extends State<QuizPage> {
 
 
         Container(
-          height: 622.0,
+          height: 500.0,
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -213,7 +214,7 @@ class _QuizPageState extends State<QuizPage> {
                               child: option1 ? checkedButtonAnswer : uncheckedButtonAnswer,
                             ),
                             Container(
-                              width: 302.0,
+                              width: 280.0,
                               child: Text(
                                 questionBank.questionBank[questionIndex].options[0].option,
                                 style: TextStyle(
@@ -259,7 +260,7 @@ class _QuizPageState extends State<QuizPage> {
                               child: option2 ? checkedButtonAnswer : uncheckedButtonAnswer,
                             ),
                             Container(
-                              width: 302.0,
+                              width: 280.0,
                               child: Text(
                                 questionBank.questionBank[questionIndex].options[1].option,
                                 style: TextStyle(
@@ -306,7 +307,7 @@ class _QuizPageState extends State<QuizPage> {
                               child: option3 ? checkedButtonAnswer : uncheckedButtonAnswer,
                             ),
                             Container(
-                              width: 302.0,
+                              width: 280.0,
                               child: Text(
                                 questionBank.questionBank[questionIndex].options[2].option,
                                 style: TextStyle(
@@ -354,7 +355,7 @@ class _QuizPageState extends State<QuizPage> {
                               child: option4 ? checkedButtonAnswer : uncheckedButtonAnswer,
                             ),
                             Container(
-                              width: 302.0,
+                              width: 280.0,
                               child: Text(
                                 questionBank.questionBank[questionIndex].options[3].option,
                                 style: TextStyle(
@@ -381,6 +382,7 @@ class _QuizPageState extends State<QuizPage> {
         Container(
           width: double.infinity,
           height: 80.0,
+          margin: EdgeInsets.only(bottom: 10.0),
           child: Card(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(35.0),
@@ -389,7 +391,7 @@ class _QuizPageState extends State<QuizPage> {
             margin: EdgeInsets.only(left: 15.0, right: 15.0),
             child: Padding(
               padding:
-              EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
+              EdgeInsets.symmetric(horizontal: 18.0, vertical: 10.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
