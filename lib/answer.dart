@@ -1,6 +1,7 @@
 import 'package:quizzler_mult/question_bank.dart';
-
 import 'option.dart';
+
+enum AnswersSelected {firstAnswer, secondAnswer, thirdAnswer, fourthAnswer, unselected}
 
 class Answer {
 
@@ -11,6 +12,12 @@ class Answer {
   late bool _option3;
   late bool _option4;
 
+
+  late AnswersSelected firstAnswer;
+  late AnswersSelected secondAnswer;
+  late AnswersSelected thirdAnswer;
+  late AnswersSelected fourthAnswer;
+
   QuestionBank _questionBank = QuestionBank();
 
   late List<Option> _correctUncorrectOptions;
@@ -18,15 +25,26 @@ class Answer {
 
 
   Answer({required int id, required String text, required bool option1, required bool option2,
-    required bool option3, required bool option4, required List<Option> correctUncorrectOptions}) {
+    required bool option3, required bool option4, required List<Option> correctUncorrectOptions,
+    required AnswersSelected firstAnswer,
+    required AnswersSelected secondAnswer,
+    required AnswersSelected thirdAnswer,
+    required AnswersSelected fourthAnswer,
+  }) {
 
-    this._id = id;
-    this._text = text;
-    this._option1 = option1;
-    this._option2 = option2;
-    this._option3 = option3;
-    this._option4 = option4;
-    this._correctUncorrectOptions = correctUncorrectOptions;
+    _id = id;
+    _text = text;
+    _option1 = option1;
+    _option2 = option2;
+    _option3 = option3;
+    _option4 = option4;
+    _correctUncorrectOptions = correctUncorrectOptions;
+
+    this.firstAnswer = firstAnswer;
+    this.secondAnswer = secondAnswer;
+    this.thirdAnswer = thirdAnswer;
+    this.fourthAnswer = fourthAnswer;
+
   }
 
   bool checkAnswer(int questionIndex, int optionIndex) {

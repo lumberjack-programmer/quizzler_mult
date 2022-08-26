@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
-import 'answer.dart';
-import 'question_bank.dart';
-
-
-
-
+import '../painter.dart';
+import '../screen_arguments.dart';
 
 
 class StatsPage extends StatefulWidget {
@@ -37,6 +32,49 @@ class _StatsPageState extends State<StatsPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    Future<void> _showMyDialog() async {
+      return showDialog<void>(
+        context: context,
+        barrierDismissible: false, // user must tap button!
+        builder: (BuildContext context) {
+          return Container(
+            height: 400.0,
+            child: AlertDialog(
+              backgroundColor: Color(0xffF7F7F8),
+              elevation: 6.0,
+              title: const Text('Total Results'),
+              content: SingleChildScrollView(
+                child: ListBody(
+                  children: <Widget>[
+
+
+                  Text('Correct answers: $correct', style: TextStyle(color: Colors.blue, fontSize: 18.0, fontWeight: FontWeight.bold),),
+                  Text('Wrong answers: $wrong', style: TextStyle(color: Colors.blue, fontSize: 18.0, fontWeight: FontWeight.bold),),
+                  Text('Total score: $percentageResult%', style: TextStyle(color: Colors.blue, fontSize: 18.0, fontWeight: FontWeight.bold),),
+
+
+                  ],
+                ),
+              ),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('Close'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+          );
+        },
+      );
+    }
+
+
+
+
+
 
    final argsUserAnswers = ModalRoute.of(context)!.settings.arguments as ScreenArguments;
 
@@ -184,62 +222,70 @@ class _StatsPageState extends State<StatsPage> {
 
 
     return MaterialApp(
+      theme: ThemeData.light(),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.white,
-        body: SafeArea(
-          child: Column(children: [
-            LayoutBuilder(builder: (_, constraints) => Container(
-              color: Colors.white,
-              height: 95.0,
-              width: double.infinity,
-              padding: EdgeInsets.zero,
-              child: CustomPaint(
-                painter: Painter(),
-              ),
-            ),),
+        appBar: AppBar(
+            title: Text('Results'),
+          actions: [
+            IconButton(onPressed: () {
+              _showMyDialog();
+            }, icon: Icon(Icons.more_vert))
+          ],
+        ),
+        backgroundColor: Color(0xffF7F7F8),
+        body: Container(
+          margin: EdgeInsets.only(top: 10.0),
+          child: SafeArea(
+            child: Column(children: [
+              // LayoutBuilder(builder: (_, constraints) => Container(
+              //   color: Colors.white,
+              //   height: 95.0,
+              //   width: double.infinity,
+              //   padding: EdgeInsets.zero,
+              //   child: CustomPaint(
+              //     painter: Painter(),
+              //   ),
+              // ),),
 
 
-            SizedBox(height: 20.0,),
-
-            Container(
-              padding: EdgeInsets.all(30.0),
-              margin: EdgeInsets.all(5.0),
-              decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(width: 2.0, color: Colors.lightBlue.shade900),
-                  bottom: BorderSide(width: 2.0, color: Colors.lightBlue.shade900),
-                  left: BorderSide(width: 2.0, color: Colors.lightBlue.shade900),
-                  right: BorderSide(width: 2.0, color: Colors.lightBlue.shade900),
-                ),
-                color: Colors.white,
-              ),
-              child: Column(
-                children: [
-                  Text('Correct answers: $correct', style: TextStyle(color: Colors.blue, fontSize: 18.0, fontWeight: FontWeight.bold),),
-                  Text('Wrong answers: $wrong', style: TextStyle(color: Colors.blue, fontSize: 18.0, fontWeight: FontWeight.bold),),
-                  Text('Total score: $percentageResult%', style: TextStyle(color: Colors.blue, fontSize: 18.0, fontWeight: FontWeight.bold),),
-                ],
-              ),
-            ),
+              // Container(
+              //   padding: EdgeInsets.all(30.0),
+              //   margin: EdgeInsets.all(5.0),
+              //   decoration: BoxDecoration(
+              //     border: Border(
+              //       top: BorderSide(width: 2.0, color: Colors.lightBlue.shade900),
+              //       bottom: BorderSide(width: 2.0, color: Colors.lightBlue.shade900),
+              //       left: BorderSide(width: 2.0, color: Colors.lightBlue.shade900),
+              //       right: BorderSide(width: 2.0, color: Colors.lightBlue.shade900),
+              //     ),
+              //     color: Colors.white,
+              //   ),
+              //   child: Column(
+              //     children: [
+              //       Text('Correct answers: $correct', style: TextStyle(color: Colors.blue, fontSize: 18.0, fontWeight: FontWeight.bold),),
+              //       Text('Wrong answers: $wrong', style: TextStyle(color: Colors.blue, fontSize: 18.0, fontWeight: FontWeight.bold),),
+              //       Text('Total score: $percentageResult%', style: TextStyle(color: Colors.blue, fontSize: 18.0, fontWeight: FontWeight.bold),),
+              //     ],
+              //   ),
+              // ),
 
 
 
-            SizedBox(height: 25.0,),
 
-            Container(
-                height: 520.0,
-                padding: EdgeInsets.only(left: 5.0, right: 5.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: widgets,
 
+              Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: widgets,
+
+                    ),
                   ),
                 ),
-              ),
 
-          ],
-              ),
+            ],
+                ),
+          ),
         ),
       ),
     );

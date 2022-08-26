@@ -260,15 +260,15 @@ class QuestionBank {
 
    Question(
      id: 23,
-     text: 'Which item types exist?',
+     text: 'What statements are wrong about extensions?',
      options: [
-       Option(option: 'collectiontype',
+       Option(option: 'they have to be inside the bin folder',
            answer: false),
-       Option(option: 'enumtype', answer: false),
-       Option(option: 'atomictype',
-           answer: false),
-       Option(option: 'listtype',
-           answer:  true),
+       Option(option: 'they need to have a dependency to yempty', answer: false),
+       Option(option: 'they can written using Groovy',
+           answer: true),
+       Option(option: 'they are always automatically loaded',
+           answer:  false),
      ],),
 
    Question(
@@ -281,7 +281,7 @@ class QuestionBank {
        Option(option: 'atomictype',
            answer: true),
        Option(option: 'listtype',
-           answer:  true),
+           answer:  false),
      ],),
 
    Question(
@@ -299,15 +299,15 @@ class QuestionBank {
 
    Question(
      id: 26,
-     text: 'A customer segment could be executed in?',
+     text: 'What statements are true about the SAP Hybris server?',
      options: [
-       Option(option: 'optimized processing',
+       Option(option: 'based on Apache Tomcat',
            answer: true),
-       Option(option: 'full processing', answer: true),
-       Option(option: 'jalo processing',
+       Option(option: 'good for production', answer: true),
+       Option(option: 'compatible with EJB',
            answer: false),
-       Option(option: 'complete processing',
-           answer:  false),
+       Option(option: 'can be started from the command line',
+           answer:  true),
      ],),
 
    Question(
@@ -360,6 +360,93 @@ class QuestionBank {
        Option(option: 'rule executor',
            answer: false),
        Option(option: 'rule builder',
+           answer:  true),
+     ],),
+
+////
+
+   Question(
+     id: 31,
+     text: 'Why would you use classiication?',
+     options: [
+       Option(option: 'to optimize Apache SOLR requests',
+           answer: false),
+       Option(option: 'to have dynamic product features', answer: true),
+       Option(option: 'to speed up search',
+           answer: false),
+       Option(option: 'to unify product and category attributes',
+           answer:  false),
+     ],),
+
+   Question(
+     id: 32,
+     text: 'When you run an impex import query from the HAC with the default coniguration what statements are true?',
+     options: [
+       Option(option: 'you are running distributed impexes',
+           answer: false),
+       Option(option: 'you are using the service layer', answer: true),
+       Option(option: 'you are using the jalo layer',
+           answer: false),
+       Option(option: 'import relaxed is activated',
+           answer:  false),
+     ],),
+
+   Question(
+     id: 33,
+     text: 'Which of the following would be good uses for a SAP Hybris CronJob?',
+     options: [
+       Option(option: 'synchronizing the stock level with an external warehouse once per day',
+           answer: true),
+       Option(option: 'notify the System Administrator when the peak load on the server passes a critical point',
+           answer: false),
+       Option(option: 'perform an inventory once per week at midnight',
+           answer: true),
+       Option(option: 'any task that isn’t database related, cronjobs are designed to perform operating System tasks, notdatabase system tasks',
+           answer:  false),
+     ],),
+
+
+   Question(
+     id: 34,
+     text: 'Content slots for page template are?',
+     options: [
+       Option(option: 'place holder for CMS component',
+           answer: true),
+       Option(option: 'place holder for JSP tags',
+           answer: false),
+       Option(option: 'shared across all pages using the page template',
+           answer: true),
+       Option(option: 'conigured on the JSP view page',
+           answer:  false),
+     ],),
+
+
+   Question(
+     id: 35,
+     text: 'Is it possible to add new enumeration values by runtime?',
+     options: [
+       Option(option: 'no',
+           answer: false),
+       Option(option: 'yes if you are using JRebel',
+           answer: false),
+       Option(option: 'yes if the enumeration is dynamic',
+           answer: true),
+       Option(option: 'yes if the enumeration is a subtype of the HybrisEnumValue class',
+           answer:  true),
+     ],),
+
+
+   Question(
+     id: 36,
+     text: '',
+     options: [
+       Option(option: 'no',
+           answer: false),
+       Option(option: 'yes if you are using JRebel',
+           answer: false),
+       Option(option: 'yes if the enumeration is dynamic',
+           answer: true),
+       Option(option: 'yes if the enumeration is a subtype of the HybrisEnumValue class',
            answer:  true),
      ],),
 
