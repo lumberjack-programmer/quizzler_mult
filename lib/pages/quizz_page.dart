@@ -361,7 +361,7 @@ class _QuizPageState extends State<QuizPage> {
                         });
                       },
                       iconToggle: option1 ? checkedButtonAnswer : uncheckedButtonAnswer,
-                      questionText: questionBank.questionBank[questionIndex].options[0].option,
+                      questionText: '1. ${questionBank.questionBank[questionIndex].options[0].option}',
                       buttonColorToggle: option1 ? optionCheckedColor : optionUncheckedColor,
                     buttonTextColorToggle: option1 ? optionCheckedFontColor : optionUncheckedFontColor,
                   ),
@@ -377,7 +377,7 @@ class _QuizPageState extends State<QuizPage> {
                       });
                     },
                     iconToggle: option2 ? checkedButtonAnswer : uncheckedButtonAnswer,
-                    questionText: questionBank.questionBank[questionIndex].options[1].option,
+                    questionText: '2. ${questionBank.questionBank[questionIndex].options[1].option}',
                     buttonColorToggle: option2 ? optionCheckedColor : optionUncheckedColor,
                     buttonTextColorToggle: option2 ? optionCheckedFontColor : optionUncheckedFontColor,
                   ),
@@ -393,7 +393,7 @@ class _QuizPageState extends State<QuizPage> {
                       });
                     },
                     iconToggle: option3 ? checkedButtonAnswer : uncheckedButtonAnswer,
-                    questionText: questionBank.questionBank[questionIndex].options[2].option,
+                    questionText: '3. ${questionBank.questionBank[questionIndex].options[2].option}',
                     buttonColorToggle: option3 ? optionCheckedColor : optionUncheckedColor,
                     buttonTextColorToggle: option3 ? optionCheckedFontColor : optionUncheckedFontColor,
                   ),
@@ -408,7 +408,7 @@ class _QuizPageState extends State<QuizPage> {
                       });
                     },
                     iconToggle: option4 ? checkedButtonAnswer : uncheckedButtonAnswer,
-                    questionText: questionBank.questionBank[questionIndex].options[3].option,
+                    questionText: '4. ${questionBank.questionBank[questionIndex].options[3].option}',
                     buttonColorToggle: option4 ? optionCheckedColor : optionUncheckedColor,
                     buttonTextColorToggle: option4 ? optionCheckedFontColor : optionUncheckedFontColor,
                   ),

@@ -152,7 +152,7 @@ class _StatsPageState extends State<StatsPage> {
         decoration: BoxDecoration(
           border: Border(
             top: BorderSide(width: 16.0, color: Colors.lightBlue.shade600),
-            bottom: BorderSide(width: 16.0, color: Colors.lightBlue.shade900),
+            // bottom: BorderSide(width: 16.0, color: Colors.lightBlue.shade900),
           ),
           color: Colors.white,
         ),
@@ -168,10 +168,10 @@ class _StatsPageState extends State<StatsPage> {
 
             SizedBox(height: 15.0,),
 
-
+            Divider(color: Color(0xff646FD4)),
             Align(
               alignment: Alignment.centerLeft,
-              child: Text(name.getOptionText(0), style: TextStyle(
+              child: Text('1. ${name.getOptionText(0)}', style: TextStyle(
                   color: name.checkAnswer(name.getId(), 0) ?
                   Colors.green : name.option1 == true ? Colors.red : Colors.black,
                   fontSize: 18.0,
@@ -180,11 +180,11 @@ class _StatsPageState extends State<StatsPage> {
 
 
             const SizedBox(height: 4.0,),
-
+            Divider(color: Color(0xff646FD4)),
 
             Align(
               alignment: Alignment.centerLeft,
-              child: Text(name.getOptionText(1), style: TextStyle(
+              child: Text('2. ${name.getOptionText(1)}', style: TextStyle(
                   color: name.checkAnswer(name.getId(), 1) ?
                   Colors.green : name.option2 == true ? Colors.red : Colors.black,
                   fontSize: 18.0,
@@ -192,27 +192,30 @@ class _StatsPageState extends State<StatsPage> {
             ),
 
             const SizedBox(height: 4.0,),
+            Divider(color: Color(0xff646FD4)),
 
             Align(
             alignment: Alignment.centerLeft,
-            child: Text(name.getOptionText(2), style: TextStyle(
+            child: Text('3. ${name.getOptionText(2)}', style: TextStyle(
                 color: name.checkAnswer(name.getId(), 2) ?
                 Colors.green : name.option3 == true ? Colors.red : Colors.black,
                 fontSize: 18.0,
             ),),
           ),
+            Divider(color: Color(0xff646FD4)),
 
             const SizedBox(height: 4.0,),
 
            Align(
           alignment: Alignment.centerLeft,
-          child: Text(name.getOptionText(3), style: TextStyle(
+          child: Text('4. ${name.getOptionText(3)}', style: TextStyle(
               color: name.checkAnswer(name.getId(), 3) ?
               Colors.green : name.option4 == true ? Colors.red : Colors.black,
               fontSize: 18.0,
           ),),
         ),
 
+            Divider(color: Color(0xff646FD4)),
             const SizedBox(height: 30.0,),
 
           ],
