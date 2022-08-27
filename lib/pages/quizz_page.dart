@@ -149,6 +149,7 @@ class _QuizPageState extends State<QuizPage> {
 
 
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         LayoutBuilder(builder: (_, constraints) => Container(
           color: Color(0xffF7F7F8),
@@ -332,7 +333,7 @@ class _QuizPageState extends State<QuizPage> {
           },
 
           child: Container(
-            height: 622.0,
+            height: 500.0,
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,

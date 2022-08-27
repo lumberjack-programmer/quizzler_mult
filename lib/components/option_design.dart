@@ -42,8 +42,7 @@ class DesignOption extends StatelessWidget {
                     margin: EdgeInsets.only(right: 10.0),
                     child: iconToggle,
                   ),
-                  Container(
-                    width: 302.0,
+                  Expanded(
                     child: Text(
                       questionText,
                       style: TextStyle(
