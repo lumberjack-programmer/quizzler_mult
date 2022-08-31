@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:quizzler_mult/db/entity/objectbox.dart';
 import 'pages/statsPage.dart';
 import 'pages/quizz_page.dart';
 
+late ObjectBox objectbox;
 
-void main() => runApp(Quizzler());
+Future<void> main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  objectbox = await ObjectBox.create();
+
+  runApp(const Quizzler());
+}
 
 class Quizzler extends StatelessWidget {
   const Quizzler({Key? key}) : super(key: key);

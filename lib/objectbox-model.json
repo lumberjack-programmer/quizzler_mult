@@ -1,0 +1,70 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:2359299893722402289",
+      "lastPropertyId": "3:6320144997833374243",
+      "name": "Option",
+      "properties": [
+        {
+          "id": "1:2830775453165847886",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:5013668337371925140",
+          "name": "answer",
+          "type": 1
+        },
+        {
+          "id": "3:6320144997833374243",
+          "name": "optionId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "1:346227319874796303",
+          "relationTarget": "Question"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:7192957383241176375",
+      "lastPropertyId": "2:6643348355774194592",
+      "name": "Question",
+      "properties": [
+        {
+          "id": "1:7226928026215836741",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6643348355774194592",
+          "name": "text",
+          "type": 9
+        }
+      ],
+      "relations": [
+        {
+          "id": "1:724154734340931863",
+          "name": "options",
+          "targetId": "1:2359299893722402289"
+        }
+      ]
+    }
+  ],
+  "lastEntityId": "2:7192957383241176375",
+  "lastIndexId": "1:346227319874796303",
+  "lastRelationId": "1:724154734340931863",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
