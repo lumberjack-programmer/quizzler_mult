@@ -438,18 +438,261 @@ class QuestionBank {
 
    Question(
      id: 36,
-     text: '',
+     text: 'What a POS is ?',
      options: [
-       Option(option: 'no',
+       Option(option: 'a warehouse',
            answer: false),
-       Option(option: 'yes if you are using JRebel',
-           answer: false),
-       Option(option: 'yes if the enumeration is dynamic',
+       Option(option: 'a physical store',
            answer: true),
-       Option(option: 'yes if the enumeration is a subtype of the HybrisEnumValue class',
+       Option(option: 'a web store',
+           answer: false),
+       Option(option: 'a geolocalization service',
+           answer:  false),
+     ],),
+
+   Question(
+     id: 37,
+     text: 'What statements are wrong about Backoffice widgets?',
+     options: [
+       Option(option: 'widget can extend each other',
+           answer: false),
+       Option(option: 'widget ids must be unique or the compilation fails',
+           answer: true),
+       Option(option: 'views are implemented using JSP tags',
+           answer: true),
+       Option(option: 'widgets can have parameters',
+           answer:  false),
+     ],),
+
+   Question(
+     id: 38,
+     text: 'When writing unit tests how should you simulate pojo dependencies to external services, facades?',
+     options: [
+       Option(option: 'the test class should extend HybrisUnitTests',
+           answer: false),
+       Option(option: 'the test class should extend ServicelayerTest',
+           answer: false),
+       Option(option: 'use Mockito to stub dependencies',
+           answer: true),
+       Option(option: 'wrap all tests inside a transaction',
+           answer:  false),
+     ],),
+
+   Question(
+     id: 39,
+     text: 'What is the notiication framework used for?',
+     options: [
+       Option(option: 'notify cockpit users',
+           answer: false),
+       Option(option: 'notify customers',
+           answer: true),
+       Option(option: 'notify administrators',
+           answer: false),
+       Option(option: 'facade for the event service',
+           answer:  false),
+     ],),
+
+   Question(
+     id: 40,
+     text: 'What statements are true about stock levels?',
+     options: [
+       Option(option: 'the stock service can check stock levels across multiple warehouses',
+           answer: false),
+       Option(option: 'a single warehouse can contain multiple stock levels for the same product',
+           answer: true),
+       Option(option: 'a base store is attached to a single warehouse',
+           answer: false),
+       Option(option: 'a product can be sold even if it has no stock',
            answer:  true),
      ],),
 
+   Question(
+     id: 41,
+     text: 'The CS cockpit was designed for?',
+     options: [
+       Option(option: 'customer segment management',
+           answer: false),
+       Option(option: 'order life cycles management',
+           answer: true),
+       Option(option: ' css rendering management',
+           answer: false),
+       Option(option: 'customer security management',
+           answer:  true),
+     ],),
+
+   Question(
+     id: 42,
+     text: 'The CS cockpit was designed for?',
+     options: [
+       Option(option: 'customer segment management',
+           answer: false),
+       Option(option: 'order life cycles management',
+           answer: true),
+       Option(option: 'css rendering management',
+           answer: false),
+       Option(option: 'customer security management',
+           answer:  false),
+     ],),
+
+   Question(
+     id: 43,
+     text: 'SAP Hybris semi-session failover mechanism allows to?',
+     options: [
+       Option(option: 'automatically redirected users to the login page of a new node when on node goes down',
+           answer: false),
+       Option(option: 'to transfer all sessions of the failing node to other available nodes without loss of data',
+           answer: true),
+       Option(option: 'to always have all sessions replicated on every nodes',
+           answer: false),
+       Option(option: 'to automatically redirect users to a temporary page',
+           answer:  false),
+     ],),
+
+   Question(
+     id: 44,
+     text: 'What service should you use to save an model?',
+     options: [
+       Option(option: 'persistenceService',
+           answer: false),
+       Option(option: 'jaloService',
+           answer: false),
+       Option(option: 'serviceLayerService',
+           answer: false),
+       Option(option: 'modelService',
+           answer:  true),
+     ],),
+
+
+   Question(
+     id: 45,
+     text: 'If you are testing a Flexible Search Restriction, the user you are running the query as?',
+     options: [
+       Option(option: 'should be admin',
+           answer: false),
+       Option(option: 'should be lexiblesearchquery',
+           answer: false),
+       Option(option: 'should be a member of the searchquery group',
+           answer: false),
+       Option(option: 'should not be a member of the admin group',
+           answer:  true),
+     ],),
+
+   Question(
+     id: 46,
+     text: 'With default coniguration when you load a model item with the model service (for examples product model).What is automatically loaded inside the object?',
+     options: [
+       Option(option: 'nothing, all attributes are lazy loaded',
+           answer: true),
+       Option(option: 'only literal values',
+           answer: false),
+       Option(option: 'only reference values',
+           answer: false),
+       Option(option: 'all',
+           answer:  false),
+     ],),
+
+   // Mock exam 3
+
+   Question(
+     id: 47,
+     text: 'Dynamic forms are used to?',
+     options: [
+       Option(option: 'Automatically generates html forms from an Hybris model object',
+           answer: false),
+       Option(option: 'Executes dynamic actions on attributes, sections and tabs when a model property changes',
+           answer: true),
+       Option(option: 'Executes dynamic actions on dynamic attributes based on the spring actions attached to the model',
+           answer: false),
+       Option(option: 'Automatically saves input data when the user ills a form from the accelerator',
+           answer:  false),
+     ],),
+
+   Question(
+     id: 48,
+     text: 'Dynamic forms are used to?',
+     options: [
+       Option(option: 'Automatically generates html forms from an Hybris model object',
+           answer: false),
+       Option(option: 'Executes dynamic actions on attributes, sections and tabs when a model property changes',
+           answer: true),
+       Option(option: 'Executes dynamic actions on dynamic attributes based on the spring actions attached to the model',
+           answer: false),
+       Option(option: 'Automatically saves input data when the user ills a form from the accelerator',
+           answer:  false),
+     ],),
+
+
+   Question(
+     id: 49,
+     text: 'When you use advanced personalization what are the valid scopes for segment rule results?',
+     options: [
+       Option(option: 'Singleton',
+           answer: false),
+       Option(option: 'Session',
+           answer: true),
+       Option(option: 'Web',
+           answer: false),
+       Option(option: 'Permanent',
+           answer:  false),
+     ],),
+
+   Question(
+     id: 50,
+     text: 'When you use advanced personalization what are the valid scopes for segment rule results?',
+     options: [
+       Option(option: 'Singleton',
+           answer: false),
+       Option(option: 'Session',
+           answer: true),
+       Option(option: 'Web',
+           answer: false),
+       Option(option: 'Permanent',
+           answer:  true),
+     ],),
+
+   Question(
+     id: 51,
+     text: 'Choose the right deinition for the modulegen ant task',
+     options: [
+       Option(option: 'Generate sets of dependent extensions to quickly start new projects or create new applications',
+           answer: true),
+       Option(option: 'Generate a single dependent extension to quickly start new projects or create new applications',
+           answer: false),
+       Option(option: 'Generate new extensions based on extension templates',
+           answer: false),
+       Option(option: 'Generate new empty extensions',
+           answer:  false),
+     ],),
+
+
+   Question(
+     id: 52,
+     text: 'Which of the following are out of the box point of services?',
+     options: [
+       Option(option: 'Factory',
+           answer: false),
+       Option(option: 'ServiceDesk',
+           answer: false),
+       Option(option: 'Store',
+           answer: true),
+       Option(option: 'Warehouse',
+           answer:  true),
+     ],),
+
+
+   Question(
+     id: 53,
+     text: 'What attribute from the stock level item are mandatory?',
+     options: [
+       Option(option: 'A warehouse',
+           answer: true),
+       Option(option: 'A product model',
+           answer: false),
+       Option(option: 'A product code',
+           answer: true),
+       Option(option: 'A point of service',
+           answer:  false),
+     ],),
 
   ];
 

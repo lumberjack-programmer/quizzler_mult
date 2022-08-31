@@ -333,7 +333,7 @@ class _QuizPageState extends State<QuizPage> {
           },
 
           child: Container(
-            height: 590.0,
+            height: MediaQuery.of(context).size.height * 0.70,
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
