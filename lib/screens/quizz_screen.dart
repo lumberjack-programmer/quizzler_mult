@@ -140,8 +140,22 @@ class _QuizScreenState extends State<QuizScreen> {
                               Navigator.of(context).pop();
                             });
                         },
-                        child: Container(
-                          color: questionBank.questionBank[i].areUnselected == true ? Colors.grey : Colors.green,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.0),
+                          gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            questionBank.questionBank[i].areUnselected == true ? Colors.grey : Colors.green,
+                            kBlue,
+                          ],
+                            stops: [
+                              0.8,
+                              1.0,
+                            ]
+                        ),
+                        ),
                           height: 5.0,
                           width: 25.0,
                           child: Center(child: Text('${i + 1}', style: TextStyle(color: Colors.white,),)),
