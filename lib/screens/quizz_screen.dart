@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:quizzler_mult/constants.dart';
 import 'package:quizzler_mult/widgets/custom_button.dart';
@@ -85,12 +87,19 @@ class _QuizScreenState extends State<QuizScreen> {
     thirdAnswer = questionBank.questionBank[questionIndex].options[2].thirdAnswer!;
     fourthAnswer = questionBank.questionBank[questionIndex].options[3].fourthAnswer!;
   }
+  double opacityLevel = 1.0;
 
   @override
   Widget build(BuildContext context) {
+    void _changeOpacity() {
+      setState(() => opacityLevel = opacityLevel == 0 ? 1.0 : 0.0);
+    }
+
     finishButton = CustomButton(
         background: Colors.green,
         onPressed: () {
+          writeAnswers();
+
           Navigator.pushNamed(
                       context,
                       StatsScreen.routeName,
@@ -105,69 +114,77 @@ class _QuizScreenState extends State<QuizScreen> {
 
     // Show Dialog
     Future<void> _dialogBuilder(BuildContext context) {
+      _changeOpacity;
       return showDialog<void>(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
+            backgroundColor: Colors.white12.withOpacity(0.2),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(25.0),
             ),
-            title: const Text('Assessment Navigator'),
-            content: SingleChildScrollView(
-              child: Container(
-                height: 200.0,
-                width: 320.0,
-                margin: EdgeInsets.only(top: 30.0),
-                child: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                      childAspectRatio: 0.8,
-                      crossAxisSpacing: 8,
-                      mainAxisSpacing: 8,
-                      maxCrossAxisExtent: 50,
-                    ),
-                    itemCount: questionBank.questionBank.length,
-                    itemBuilder: (BuildContext context, i) {
-                      return GestureDetector(
-                        onTap: (){
-                            setState(() {
-                              isBlank();
-                              writeAnswers();
-                              questionIndex = i;
-                              readAnswers();
-                              Navigator.of(context).pop();
-                            });
-                        },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8.0),
-                          gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            questionBank.questionBank[i].areUnselected == true ? Colors.grey : Colors.green,
-                            kLightGrayishBlue,
-                          ],
-                            stops: [
-                              0.8,
-                              1.0,
-                            ]
+            content: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+              child: SingleChildScrollView(
+                child: Container(
+                  height: 600.0,
+                  width: 400.0,
+                  margin: EdgeInsets.only(top: 30.0),
+                  child: GridView.builder(
+                      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                        childAspectRatio: 0.8,
+                        crossAxisSpacing: 8,
+                        mainAxisSpacing: 8,
+                        maxCrossAxisExtent: 50,
+                      ),
+                      itemCount: questionBank.questionBank.length,
+                      itemBuilder: (BuildContext context, i) {
+                        return GestureDetector(
+                          onTap: (){
+                              setState(() {
+                                isBlank();
+                                writeAnswers();
+                                questionIndex = i;
+                                readAnswers();
+                                Navigator.of(context).pop();
+                              });
+                          },
+                        child: AnimatedOpacity(
+                          opacity: opacityLevel,
+                          duration: Duration(seconds: 3),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8.0),
+                              gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                questionBank.questionBank[i].areUnselected == true ? Colors.grey : Colors.green,
+                                kLightGrayishBlue,
+                              ],
+                                stops: [
+                                  0.6,
+                                  1.0,
+                                ]
+                            ),
+                            ),
+                              height: 5.0,
+                              width: 25.0,
+                              child: Center(child: Text('${i + 1}', style: TextStyle(color: Colors.white,),)),
+                            ),
                         ),
-                        ),
-                          height: 5.0,
-                          width: 25.0,
-                          child: Center(child: Text('${i + 1}', style: TextStyle(color: Colors.white,),)),
-                        ),
-                      );
-                    }
-                ),
-              )
+                        );
+                      }
+                  ),
+                )
+              ),
             ),
             actions: [
               TextButton(
                 style: TextButton.styleFrom(
                   textStyle: Theme.of(context).textTheme.labelLarge,
                 ),
-                child: const Text('Close'),
+                child: const Text('Close', style: TextStyle(color: Colors.white, fontSize: 16.0),),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
@@ -361,6 +378,7 @@ class _QuizScreenState extends State<QuizScreen> {
                           onPressed: () {
                             // TODO: Implement Assignment Navigator
                             _dialogBuilder(context);
+
                           },
                           child: Padding(
                             padding: EdgeInsets.all(10.0),
