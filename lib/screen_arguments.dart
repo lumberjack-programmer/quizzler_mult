@@ -1,9 +1,11 @@
+import 'package:quizzler_mult/question_bank.dart';
+
 import 'answer.dart';
 
 class ScreenArguments {
-  final List<Answer> userAnswers;
+  final QuestionBank questionBank;
   final int length = 0;
   final int correct = 0;
   final int wrong = 0;
-  ScreenArguments(this.userAnswers);
+  ScreenArguments(this.questionBank);
 }

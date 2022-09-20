@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 
-class DesignOption extends StatelessWidget {
-  DesignOption({
+class OptionArea extends StatelessWidget {
+  OptionArea({
     required this.function,
     required this.iconToggle,
     required this.questionText,

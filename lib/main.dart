@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'pages/statsPage.dart';
-import 'pages/quizz_page.dart';
+import 'package:quizzler_mult/screens/articles_screen.dart';
+import 'package:quizzler_mult/screens/stats_screen.dart';
+import 'constants.dart';
+import 'screens/quizz_screen.dart';
 
 
 void main() => runApp(Quizzler());
@@ -13,14 +15,11 @@ class Quizzler extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        StatsPage.routeName: (context) => StatsPage(),
+        StatsScreen.routeName: (context) => StatsScreen(),
+        ArticlesScreen.id: (context) => ArticlesScreen(),
       },
-      home: Scaffold(
-        backgroundColor: Color(0xffF7F7F8),
-        body: SafeArea(
-          child: QuizPage(),
-        ),
-      ),
+      home: QuizScreen(),
+
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizzler_mult/constants.dart';
 
 class Painter extends CustomPainter {
   // Image.asset("assets/help_black_24dp.svg");
@@ -7,7 +8,7 @@ class Painter extends CustomPainter {
     final paint = Paint()
       ..style = PaintingStyle.fill
       ..strokeWidth = 4.0
-      ..color = Color(0xff646FD4);
+      ..color = kBlue;
     canvas.drawOval(Rect.fromLTWH(-85, -160, 580, 250), paint);
     final textStyle = TextStyle(
       color: Colors.white,
