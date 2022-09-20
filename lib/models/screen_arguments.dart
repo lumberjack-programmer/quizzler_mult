@@ -1,4 +1,4 @@
-import 'package:quizzler_mult/question_bank.dart';
+import 'package:quizzler_mult/db/question_bank.dart';
 
 import 'answer.dart';
 

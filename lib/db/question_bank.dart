@@ -1,5 +1,5 @@
-import 'option_model.dart';
-import 'question.dart';
+import '../models/option_model.dart';
+import '../models/question.dart';
 
 class QuestionBank {
 

@@ -1,4 +1,4 @@
-import 'package:quizzler_mult/answer.dart';
+import 'package:quizzler_mult/models/answer.dart';
 
 import 'option_model.dart';
 

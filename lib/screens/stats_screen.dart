@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:quizzler_mult/answer.dart';
+import 'package:quizzler_mult/models/answer.dart';
 import 'package:quizzler_mult/constants.dart';
-import '../painter.dart';
-import '../screen_arguments.dart';
+import '../components/painter.dart';
+import '../models/screen_arguments.dart';
 
 
 class StatsScreen extends StatefulWidget {

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:quizzler_mult/constants.dart';
 import 'package:quizzler_mult/widgets/custom_button.dart';
 import 'package:swipe/swipe.dart';
-import '../question_bank.dart';
+import '../db/question_bank.dart';
 import 'articles_screen.dart';
 import 'stats_screen.dart';
-import '../answer.dart';
-import '../screen_arguments.dart';
-import '../painter.dart';
+import '../models/answer.dart';
+import '../models/screen_arguments.dart';
+import '../components/painter.dart';
 import '../components/option_area.dart';
 import '../components/option_button.dart';
 
@@ -28,9 +28,6 @@ class _QuizScreenState extends State<QuizScreen> {
     questionBank = QuestionBank();
     super.initState();
   }
-
-
-
   var questionIndex = 0;
 
   Icon uncheckedButtonAnswer = OptionButton(icon: Icons.radio_button_unchecked, color: kBlue,);
@@ -148,7 +145,7 @@ class _QuizScreenState extends State<QuizScreen> {
                           end: Alignment.bottomCenter,
                           colors: [
                             questionBank.questionBank[i].areUnselected == true ? Colors.grey : Colors.green,
-                            kBlue,
+                            kLightGrayishBlue,
                           ],
                             stops: [
                               0.8,
