@@ -40,6 +40,9 @@ class _QuizScreenState extends State<QuizScreen> {
 
   final optionCheckedFontColor = Colors.white;
   final optionUncheckedFontColor = Colors.black87;
+  final correctOptionGreen = Colors.green;
+
+
 
   AnswersSelected firstAnswer = AnswersSelected.unselected;
   AnswersSelected secondAnswer = AnswersSelected.unselected;
@@ -47,12 +50,26 @@ class _QuizScreenState extends State<QuizScreen> {
   AnswersSelected fourthAnswer = AnswersSelected.unselected;
 
 
-  final checkAnswersButton = CustomButton(
-      background: kBlue,
-      onPressed: (){},
-      label: 'Check Answers',
-      textColor: Colors.white
-  );
+  bool first = false;
+  bool second = false;
+  bool third = false;
+  bool fourth = false;
+
+  getAnswersCorrect() {
+    if (first == false && second == false && third == false && fourth == false) {
+      first =  questionBank.questionBank[questionIndex].options[0].answer;
+      second =  questionBank.questionBank[questionIndex].options[1].answer;
+      third =  questionBank.questionBank[questionIndex].options[2].answer;
+      fourth =  questionBank.questionBank[questionIndex].options[3].answer;
+    } else {
+      first = false;
+      second = false;
+      third = false;
+      fourth = false;
+    }
+
+  }
+
 
   var finishButton;
 
@@ -296,7 +313,7 @@ class _QuizScreenState extends State<QuizScreen> {
                           iconToggle: firstAnswer == AnswersSelected.unselected ? uncheckedButtonAnswer : checkedButtonAnswer,
                           questionText: '1. ${questionBank.questionBank[questionIndex].options[0].option}',
                           buttonColorToggle: firstAnswer == AnswersSelected.unselected ? optionUncheckedColor : optionCheckedColor,
-                        buttonTextColorToggle: firstAnswer == AnswersSelected.unselected ? optionUncheckedFontColor : optionCheckedFontColor,
+                        buttonTextColorToggle: first == false ? (firstAnswer == AnswersSelected.unselected ? optionUncheckedFontColor : optionCheckedFontColor) : correctOptionGreen,
                       ),
                       SizedBox(
                         height: 10.0,
@@ -311,7 +328,7 @@ class _QuizScreenState extends State<QuizScreen> {
                         iconToggle: secondAnswer == AnswersSelected.unselected ? uncheckedButtonAnswer : checkedButtonAnswer,
                         questionText: '2. ${questionBank.questionBank[questionIndex].options[1].option}',
                         buttonColorToggle: secondAnswer == AnswersSelected.unselected ? optionUncheckedColor : optionCheckedColor,
-                        buttonTextColorToggle: secondAnswer == AnswersSelected.unselected ? optionUncheckedFontColor : optionCheckedFontColor,
+                        buttonTextColorToggle: second == false ? (secondAnswer == AnswersSelected.unselected ? optionUncheckedFontColor : optionCheckedFontColor) : correctOptionGreen,
                       ),
                       SizedBox(
                         height: 10.0,
@@ -326,7 +343,7 @@ class _QuizScreenState extends State<QuizScreen> {
                         iconToggle: thirdAnswer == AnswersSelected.unselected ? uncheckedButtonAnswer : checkedButtonAnswer,
                         questionText: '3. ${questionBank.questionBank[questionIndex].options[2].option}',
                         buttonColorToggle: thirdAnswer == AnswersSelected.unselected ? optionUncheckedColor : optionCheckedColor,
-                        buttonTextColorToggle: thirdAnswer == AnswersSelected.unselected ? optionUncheckedFontColor : optionCheckedFontColor,
+                        buttonTextColorToggle: third == false ? (thirdAnswer == AnswersSelected.unselected ? optionUncheckedFontColor : optionCheckedFontColor) : correctOptionGreen,
                       ),
                       SizedBox(
                         height: 10.0,
@@ -341,7 +358,7 @@ class _QuizScreenState extends State<QuizScreen> {
                         iconToggle: fourthAnswer == AnswersSelected.unselected ? uncheckedButtonAnswer : checkedButtonAnswer,
                         questionText: '4. ${questionBank.questionBank[questionIndex].options[3].option}',
                         buttonColorToggle: fourthAnswer == AnswersSelected.unselected ? optionUncheckedColor : optionCheckedColor,
-                        buttonTextColorToggle: fourthAnswer == AnswersSelected.unselected ? optionUncheckedFontColor : optionCheckedFontColor,
+                        buttonTextColorToggle: fourth == false ? (fourthAnswer == AnswersSelected.unselected ? optionUncheckedFontColor : optionCheckedFontColor) : correctOptionGreen,
                       ),
                     ],
                   ),
@@ -358,7 +375,15 @@ class _QuizScreenState extends State<QuizScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      questionIndex  == questionBank.questionBank.length - 1 ? finishButton : checkAnswersButton,
+                      questionIndex  == questionBank.questionBank.length - 1 ? finishButton : CustomButton(
+                              background: kBlue,
+                              onPressed: () {
+                                setState(() {
+                                  getAnswersCorrect();
+                                });
+                              },
+                              label: 'Check Answers',
+                              textColor: Colors.white),
                     ],
                   ),
                 ),
